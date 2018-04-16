@@ -17,8 +17,9 @@
 
 .loader {
   overflow: hidden;
-  font-size: 45px;
-  
+  font-size: 18px;
+  height : 60px;
+  padding : 20px;
   span {
     @include animation(loading 1s linear infinite -.8s);
     float: left;
