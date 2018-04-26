@@ -10,6 +10,7 @@ import android.webkit.WebView;
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
+    private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +24,18 @@ public class MainActivity extends AppCompatActivity {
         //调用WebView关联的WebSettings中setJavaScriptEnable(true)方法。
         wSet.setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/web/index.html");
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.birsday);
+         mediaPlayer = MediaPlayer.create(this, R.raw.birsday);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer != null) {
+            mediaPlayer.release();
+        }
     }
 }
